@@ -1,5 +1,5 @@
+import sys
 from optparse import OptionParser
-
 
 class CommandLineOptionParser(object):
     """
@@ -15,15 +15,19 @@ class CommandLineOptionParser(object):
         self.input_options = options
 
     def parseArguments(self, args):
-        if args[1] == '-h' or args[1] == '--help':
-            args.append(" ")
-        (options, args) = self.parser.parse_args(args)
-        for option in self.input_options:
-            attr = getattr(options, option.dest)
-            if attr is not None:
-                setattr(self, option.dest, attr)
-            else:
-                setattr(self, option.dest, None)
+        try:
+            if args[1] == '-h' or args[1] == '--help':
+                args.append(" ")
+            (options, args) = self.parser.parse_args(args)
+            for option in self.input_options:
+                attr = getattr(options, option.dest)
+                if attr is not None:
+                    setattr(self, option.dest, attr)
+                else:
+                    setattr(self, option.dest, None)
 
-        self.args = args
-        self.options = options
+            self.args = args
+            self.options = options
+        except IndexError:
+            print "Provide one of the parameters.Type -h/--help for help messages"
+            sys.exit()

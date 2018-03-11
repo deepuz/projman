@@ -19,7 +19,7 @@ class StructureConfig(object):
     def __load(self, conf_path):
         with open(conf_path, 'r') as stream:
             data = yaml.load(stream)
-        return [x for x in data if x.get('value')=='houdini']
+        return [x for x in data]
 
     def get_paths(self):
         """Get the node paths as a list."""

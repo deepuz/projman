@@ -1,5 +1,3 @@
-#!/usr/bin/python
-""""""
 import os
 from structure_generator import StructureGenerator
 from structure_config import StructureConfig

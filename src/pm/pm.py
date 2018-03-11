@@ -55,10 +55,8 @@ def main():
         elif arg_parser.args[1].lower() == 'describe':
             app.printStruct()
         elif arg_parser.args[1].lower() == 'list':
-            #app.printStruct()
             app.listProjects()
         elif arg_parser.args[1].lower() == 'delete':
-            #app.printStruct()
             print 'Deleting the project...'
         else:
             print "Invalid command provided. Provide one of the subcommand option - create,delete,list,describe"

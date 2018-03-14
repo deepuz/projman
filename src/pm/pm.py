@@ -47,11 +47,18 @@ def main():
         file_path = arg_parser.file
     if not file_path:
         file_path = os.environ['PROJMAN_TEMPLATE']
+
     app = App(file_path, base_path)
 
     try:
         if arg_parser.args[1].lower() == 'create' :
-            app.run()
+            type = arg_parser.type
+            try:
+                projectName = arg_parser.args[2]
+                app.run(type, projectName)
+            except IndexError:
+                print "Provide the name of the project to create"
+                sys.exit()
         elif arg_parser.args[1].lower() == 'describe':
             app.printStruct()
         elif arg_parser.args[1].lower() == 'list':
